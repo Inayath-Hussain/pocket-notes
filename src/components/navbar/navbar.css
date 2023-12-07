@@ -1,0 +1,15 @@
+.navbar-layout {
+    height: 100vh;
+    padding: 5vh 3vw;
+    box-sizing: border-box;
+
+    overflow-y: auto;
+}
+
+.hide {
+    display: none;
+}
+
+.navbar-layout h1 {
+    font-size: 2rem;
+}

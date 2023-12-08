@@ -1,0 +1,15 @@
+.nav-icon {
+    width: 3rem;
+    height: 3rem;
+    box-sizing: border-box;
+    border-radius: 50%;
+
+    font-size: 1.2rem;
+    font-weight: 500;
+
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

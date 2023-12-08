@@ -1,9 +1,19 @@
 .navbar-layout {
-    height: 100vh;
-    padding: 5vh 3vw;
+    --padding-y: 5vh;
+    --padding-x: 2.5rem;
+    height: 100dvh;
+    padding-bottom: var(--padding-y);
     box-sizing: border-box;
 
     overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 1.2rem;
+
+    position: relative;
 }
 
 .hide {
@@ -12,4 +22,57 @@
 
 .navbar-layout h1 {
     font-size: 2rem;
+    text-align: left;
+
+    padding: var(--padding-y) var(--padding-x) 0;
+
+    position: sticky;
+    top: 0;
+
+    background: #fff;
+}
+
+.link {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 0 var(--padding-x);
+}
+
+
+.add-grp-btn {
+    position: fixed;
+    bottom: 1rem;
+    margin-right: 1rem;
+    align-self: flex-end;
+
+    background: #16008B;
+    color: #fff;
+
+    font-size: 2.8rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    box-sizing: border-box;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (min-width: 640px) {
+    .navbar-layout {
+        /* padding: 5vh 3vw; */
+        --padding-x: 3vw;
+    }
+
+    .navbar-layout h1 {
+        text-align: center;
+    }
 }

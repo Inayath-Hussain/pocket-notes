@@ -3,6 +3,7 @@ import { useLocation, Link } from "react-router-dom"
 import "./navbar.css";
 import { homeRoute } from "@/route";
 import NavIcon from "./navicon";
+import useNewGroupModal from "@/hooks/modal/useNewGroupModal";
 
 interface Igroup {
     groupName: string
@@ -20,6 +21,7 @@ const NavBar = () => {
     const [groups, setGroups] = useState<Igroup[]>(testData);
 
     const { pathname } = useLocation();
+    const { showNewGroupModal, NewGroupFormPortal } = useNewGroupModal();
 
     console.log(pathname)
 
@@ -39,10 +41,11 @@ const NavBar = () => {
                 </Link>
             ))}
 
-            <button className="add-grp-btn">
+            <button onClick={() => { showNewGroupModal(); console.log("hello ...") }} className="add-grp-btn">
                 &#43;
             </button>
 
+            {NewGroupFormPortal()}
         </div>
     );
 }

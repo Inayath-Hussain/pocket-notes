@@ -9,7 +9,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    /* gap: 1.2rem; */
 
     position: relative;
 
@@ -68,15 +67,15 @@
 
 
 .link {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+
     justify-content: flex-start;
     align-items: center;
     gap: 1.5rem;
     width: 100%;
     box-sizing: border-box;
 
-    /* padding: 0 var(--padding-x); */
     padding: 0.6rem var(--padding-x);
 
     border-radius: 0.6rem;

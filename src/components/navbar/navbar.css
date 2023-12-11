@@ -14,7 +14,7 @@
 
 }
 
-.hide {
+.mobile-hide {
     display: none;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .links-container::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
     background: var(--scrollbar-bg);
 
     padding: 0 2px;
@@ -109,9 +109,17 @@
         --padding-x: 3vw;
     }
 
+    .mobile-hide {
+        display: flex;
+    }
+
     .navbar-layout h1 {
         text-align: center;
         text-wrap: nowrap;
+    }
+
+    .links-container::-webkit-scrollbar {
+        width: 10px;
     }
 
     .link {

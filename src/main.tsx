@@ -4,11 +4,14 @@ import App from './App.tsx'
 import './index.css'
 import './reset.css'
 import NewGroupModalContext from './context/newGroupModal.tsx'
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <NewGroupModalContext>
-      <App />
-    </NewGroupModalContext>
+    <BrowserRouter>
+      <NewGroupModalContext>
+        <App />
+      </NewGroupModalContext>
+    </BrowserRouter>
   </React.StrictMode>,
 )

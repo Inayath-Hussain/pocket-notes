@@ -29,7 +29,7 @@ const NavBar = () => {
     console.log(shouldDisplay)
 
     return (
-        <div className={`navbar-layout ${shouldDisplay ? "" : ""}`}>
+        <div className={`navbar-layout ${shouldDisplay ? "" : "mobile-hide"}`}>
 
             <h1>Pocket Notes</h1>
 

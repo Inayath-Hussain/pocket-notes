@@ -10,8 +10,8 @@
   /* -webkit-font-smoothing: antialiased; */
   /* -moz-osx-font-smoothing: grayscale; */
 
-  --tablet-min-width: 640px;
-  --desktop-min-width: 1024px;
+  --tablet-min-width: 481px;
+  --desktop-min-width: 769px;
 }
 
 /* a {

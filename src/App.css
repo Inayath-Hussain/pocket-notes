@@ -1,4 +1,4 @@
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 769px) {
   .app-layout {
     display: grid;
     grid-template-columns: 30vw 70vw;

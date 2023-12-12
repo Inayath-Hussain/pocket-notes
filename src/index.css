@@ -12,6 +12,8 @@
 
   --tablet-min-width: 481px;
   --desktop-min-width: 769px;
+
+  --page-bg: #DAE5F5;
 }
 
 /* a {

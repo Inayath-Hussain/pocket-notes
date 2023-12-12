@@ -1,0 +1,43 @@
+.not-found-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    height: 100dvh;
+
+    background: var(--page-bg);
+
+    cursor: default;
+}
+
+.not-found-layout>h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.mobile-only-text {
+    display: block;
+}
+
+.mobile-only-text a {
+    text-decoration: underline;
+
+    cursor: pointer;
+}
+
+.pc-only-text {
+    display: none;
+}
+
+
+@media screen and (min-width: 769px) {
+    .mobile-only-text {
+        display: none;
+    }
+
+    .pc-only-text {
+        display: block;
+    }
+}

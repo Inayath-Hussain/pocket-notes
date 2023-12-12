@@ -71,9 +71,12 @@ const NewGroup = () => {
                         {colorOptions.map(c => (
                             <Fragment key={c}>
 
-                                <label htmlFor={c} tabIndex={0} role="radio" aria-label={c}
-                                    className={`color-label ${color === c ? "color-label-checked" : ""}`} style={{ background: c }} />
-                                <input type="radio" name="color" value={c} id={c} checked={c === color} onChange={() => setColor(c)} />
+                                <label htmlFor={c} role="radio" aria-label={c}
+                                    className={`color-label ${color === c ? "color-label-checked" : ""}`} style={{ background: c }}>
+
+                                    <input type="radio" name="color" value={c} id={c} checked={c === color} onChange={() => setColor(c)} />
+
+                                </label>
 
                             </Fragment>
                         ))}

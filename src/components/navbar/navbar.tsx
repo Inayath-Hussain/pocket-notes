@@ -1,30 +1,39 @@
 import { useState, useEffect, useContext } from "react";
-import { useLocation, Link } from "react-router-dom"
+import { useLocation, Link, useParams } from "react-router-dom"
 import { groupsContext } from "@/context/groups";
 import useNewGroupModal from "@/hooks/modal/useNewGroupModal";
-import { getGroups } from "@/utilities/localStorage/group";
-import { homeRoute } from "@/route";
+import { customGroupRoute, homeRoute } from "@/route";
 import NavIcon from "./navicon";
 import "./navbar.css";
 
 
 const NavBar = () => {
 
-    // const [groups, setGroups] = useState<IGroup[]>([]);
+    // state
+    // used for adding css class which contains different background property to differentiate from other groups
     const [currentGroup, setCurrentGroup] = useState("");
-    const { groups, setGroups } = useContext(groupsContext)
 
+    // context
+    // contains all user saved groups and their notes
+    const { groups } = useContext(groupsContext)
+
+    // hooks
     const { pathname } = useLocation();
+    const { id } = useParams();
 
     const { showNewGroupModal, NewGroupFormPortal } = useNewGroupModal();
 
     useEffect(() => {
-        // grab all groups here
-        const groups = getGroups();
 
-        setGroups(groups || [])
+        // if url contains groupName then set currentGroup value to that name.
+        setCurrentGroup(id || "");
+
     }, [])
 
+
+    // displays this component if user is in home page.
+    // this is used for mobile view, if user is in any other page than home then this component
+    // will be hidden and the respective page will be displayed. 
     const shouldDisplay = pathname === homeRoute
     console.log(shouldDisplay)
 
@@ -34,10 +43,11 @@ const NavBar = () => {
             <h1>Pocket Notes</h1>
 
             <div className="links-container">
-                {/* map icons and grpName */}
+
+                {/* all user saved groups */}
                 {groups.length > 0 && groups.map(g => (
 
-                    <Link to={g.groupName} key={g.groupName} onClick={() => setCurrentGroup(g.groupName)}
+                    <Link to={customGroupRoute(g.groupName)} key={g.groupName} onClick={() => setCurrentGroup(g.groupName)}
                         className={`link ${g.groupName === currentGroup ? "current" : ""}`}>
 
                         <NavIcon groupName={g.groupName} bgColor={g.bgColor} />
@@ -114,11 +124,12 @@ const NavBar = () => {
 
 
 
-
+            {/* button to open modal containing form to add new group */}
             <button onClick={() => { showNewGroupModal(); console.log("hello ...") }} className="add-grp-btn">
                 &#43;
             </button>
 
+            {/* this function appends modal to DOM */}
             {NewGroupFormPortal()}
         </div>
     );

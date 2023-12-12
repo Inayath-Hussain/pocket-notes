@@ -8,7 +8,7 @@ const key = "groups"
  * creates and saves new group in local storage
  */
 export const saveNewGroupToLS = (groupName: string, bgColor: string) => {
-    const data = getGroups() || [];
+    const data = getGroupsFromLS() || [];
 
     const newGroup: IGroup = {
         groupName,
@@ -21,8 +21,11 @@ export const saveNewGroupToLS = (groupName: string, bgColor: string) => {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
-
-export const getGroups = (): IGroup[] | null => {
+/**
+ * 
+ * @returns user saved groups and their notes from local storage
+ */
+export const getGroupsFromLS = (): IGroup[] | null => {
     const data = localStorage.getItem(key);
 
     if (data === null) return null

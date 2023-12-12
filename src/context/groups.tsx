@@ -1,4 +1,5 @@
 import { createContext, useState, Dispatch, SetStateAction } from "react"
+import { getGroupsFromLS } from "@/utilities/localStorage/group"
 
 interface Inote {
     content: string
@@ -17,7 +18,7 @@ interface IContext {
 }
 
 /**
- * context api to store all the notes groups
+ * context api to store all the groups and their notes
  */
 export const groupsContext = createContext<IContext>({ groups: [], setGroups: () => { } });
 
@@ -26,7 +27,11 @@ export const groupsContext = createContext<IContext>({ groups: [], setGroups: ()
  * Context Provider for {@link groupsContext}
  */
 const GroupsContextProvider = ({ children }: React.PropsWithChildren) => {
-    const [groups, setGroups] = useState<IGroup[]>([]);
+
+    // grab all user saved groups and set as initial value
+    const userGroups = getGroupsFromLS() || []
+
+    const [groups, setGroups] = useState<IGroup[]>(userGroups);
 
     return (
         <groupsContext.Provider value={{ groups, setGroups }}>

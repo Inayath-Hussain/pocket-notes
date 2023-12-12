@@ -1,29 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useLocation, Link } from "react-router-dom"
-import "./navbar.css";
+import { groupsContext } from "@/context/groups";
+import useNewGroupModal from "@/hooks/modal/useNewGroupModal";
+import { getGroups } from "@/utilities/localStorage/group";
 import { homeRoute } from "@/route";
 import NavIcon from "./navicon";
-import useNewGroupModal from "@/hooks/modal/useNewGroupModal";
+import "./navbar.css";
 
-interface Igroup {
-    groupName: string
-    bgColor: string
-}
-
-const testData: Igroup[] = [
-    { groupName: "Python Notes", bgColor: "yellow" },
-    { groupName: "SQL Notes", bgColor: "blue" },
-    { groupName: "Journal", bgColor: "orange" }
-]
 
 const NavBar = () => {
 
-    const [groups, setGroups] = useState<Igroup[]>(testData);
+    // const [groups, setGroups] = useState<IGroup[]>([]);
     const [currentGroup, setCurrentGroup] = useState("");
+    const { groups, setGroups } = useContext(groupsContext)
 
     const { pathname } = useLocation();
 
     const { showNewGroupModal, NewGroupFormPortal } = useNewGroupModal();
+
+    useEffect(() => {
+        // grab all groups here
+        const groups = getGroups();
+
+        setGroups(groups || [])
+    }, [])
 
     const shouldDisplay = pathname === homeRoute
     console.log(shouldDisplay)

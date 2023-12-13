@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import { useLocation, Link, useParams } from "react-router-dom"
+import { useLocation, Link } from "react-router-dom"
 import { groupsContext } from "@/context/groups";
 import useNewGroupModal from "@/hooks/modal/useNewGroupModal";
-import { customGroupRoute, homeRoute } from "@/route";
+import { customGroupRoute, getGroupRouteParam, groupNotePrefix, homeRoute } from "@/route";
 import NavIcon from "./navicon";
 import "./navbar.css";
 
@@ -15,27 +15,28 @@ const NavBar = () => {
 
     // context
     // contains all user saved groups and their notes
-    const { groups } = useContext(groupsContext)
+    const { groups } = useContext(groupsContext);
 
     // hooks
     const { pathname } = useLocation();
-    const { id } = useParams();
 
     const { showNewGroupModal, NewGroupFormPortal } = useNewGroupModal();
 
     useEffect(() => {
 
-        // if url contains groupName then set currentGroup value to that name.
-        setCurrentGroup(id || "");
+        // if url is a groupNote route then get groupName param and update currentGroup.
+        // this is done to update the current group UI when user searchs the group from browser search bar.
+        const param = pathname.includes(groupNotePrefix) ? getGroupRouteParam(pathname) : "";
+        setCurrentGroup(param);
 
-    }, [])
+    }, [pathname])
 
 
     // displays this component if user is in home page.
     // this is used for mobile view, if user is in any other page than home then this component
-    // will be hidden and the respective page will be displayed. 
+    // will be hidden and the respective page will be displayed.
     const shouldDisplay = pathname === homeRoute
-    console.log(shouldDisplay)
+    console.log(shouldDisplay, currentGroup)
 
     return (
         <div className={`navbar-layout ${shouldDisplay ? "" : "mobile-hide"}`}>

@@ -1,16 +1,5 @@
 import { createContext, useState, Dispatch, SetStateAction } from "react"
-import { getGroupsFromLS } from "@/utilities/localStorage/group"
-
-interface Inote {
-    content: string
-    creationDate: Date
-}
-
-export interface IGroup {
-    groupName: string
-    bgColor: string
-    notes: Inote[]
-}
+import { getGroupsFromLS, IGroup } from "@/utilities/localStorage/group"
 
 interface IContext {
     groups: IGroup[];

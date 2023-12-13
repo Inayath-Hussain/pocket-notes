@@ -1,7 +1,7 @@
 import { Fragment, useContext, useState } from "react";
 import "./newGroup.css";
-import { saveNewGroupToLS } from "@/utilities/localStorage/group";
-import { groupsContext, IGroup } from "@/context/groups";
+import { saveNewGroupToLS, IGroup } from "@/utilities/localStorage/group";
+import { groupsContext } from "@/context/groups";
 import useNewGroupModal from "@/hooks/modal/useNewGroupModal";
 
 const NewGroup = () => {
@@ -36,7 +36,7 @@ const NewGroup = () => {
 
         setGroups(prev => {
             const newState = [...prev]
-            const newGroup: IGroup = { groupName, bgColor, notes: [] }
+            const newGroup: IGroup = { groupName, bgColor }
 
             newState.unshift(newGroup)
 

@@ -4,6 +4,9 @@ import { newGroupModalContext } from "@/context/newGroupModal";
 import NewGroup from "@/components/modal/contents/newGroup";
 import ModalBase from "@/components/modal/modalBase";
 
+/**
+ * hook to handle display status of new group form modal.
+ */
 const useNewGroupModal = () => {
 
     // state variable to manage modal display status

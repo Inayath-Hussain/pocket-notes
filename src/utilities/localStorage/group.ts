@@ -1,6 +1,11 @@
-import { IGroup } from "@/context/groups";
+import { createAndSaveNotesToLS } from "./notes";
 
 const key = "groups"
+
+export interface IGroup {
+    groupName: string
+    bgColor: string
+}
 
 
 
@@ -12,13 +17,14 @@ export const saveNewGroupToLS = (groupName: string, bgColor: string) => {
 
     const newGroup: IGroup = {
         groupName,
-        bgColor,
-        notes: []
+        bgColor
     }
 
     data.unshift(newGroup)
 
     localStorage.setItem(key, JSON.stringify(data));
+
+    createAndSaveNotesToLS(groupName);
 }
 
 /**

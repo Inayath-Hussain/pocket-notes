@@ -1,0 +1,14 @@
+.notes-list-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 2.5vh;
+
+    padding: 3vh min(5vw, 2rem);
+
+    height: 100%;
+    box-sizing: border-box;
+
+    overflow-y: auto;
+}

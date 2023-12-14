@@ -1,0 +1,72 @@
+.notes-header-layout {
+    display: grid;
+    grid-template-columns: min-content min-content 1fr;
+    /* flex-direction: row; */
+    justify-content: flex-start;
+    align-items: center;
+
+    padding: 1rem;
+
+    background: #001F8B;
+}
+
+.notes-back-button {
+    padding: 0;
+    border: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-right: 0.7rem;
+}
+
+.notes-back-button>img {
+    width: 1.2rem;
+}
+
+.notes-header-group-name-container {
+    overflow: hidden;
+    margin-left: 0.9rem;
+}
+
+.notes-header-group-name {
+
+    /* if notes-header-group-name-container class is being used then remove margin-left from here */
+    margin-left: 0.9rem;
+    overflow: hidden;
+
+    font-size: 1.3rem;
+
+    color: #fff;
+
+    text-wrap: nowrap;
+}
+
+.show-full-name-animation {
+    padding-left: 100%;
+    display: inline-block;
+    animation: auto-scroll-x-text linear infinite;
+}
+
+@keyframes auto-scroll-x-text {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .notes-header-layout {
+        grid-template-columns: min-content 1fr;
+
+        padding-left: 1.5rem;
+    }
+
+    .mobile-only {
+        display: none;
+    }
+}

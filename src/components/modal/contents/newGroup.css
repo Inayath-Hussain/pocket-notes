@@ -15,6 +15,14 @@
     text-align: left;
 }
 
+.new-grp-form-error {
+    color: red;
+}
+
+.new-grp-form-error-border {
+    border-color: red !important;
+}
+
 .form-input-container {
     display: flex;
     flex-direction: row;

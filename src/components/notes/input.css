@@ -1,0 +1,62 @@
+.notes-input-layout {
+    background: #001F8B;
+
+    height: 20dvh;
+
+    /* padding same as in notesList padding. for better looking UI */
+    padding: 3vh min(5vw, 2rem);
+
+}
+
+.notes-input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    background: #fff;
+    border-radius: 6px;
+
+    height: 100%;
+}
+
+.notes-input-container>textarea {
+    resize: none;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    padding: 1rem 0.7rem;
+    margin-right: 0.1rem;
+
+    box-sizing: border-box;
+
+    font: var(--roboto-font);
+    font-weight: 400;
+
+    font-size: 1.1rem;
+
+    border: none;
+    outline: none;
+
+}
+
+
+.notes-input-container>button {
+    border: none;
+
+    padding-left: 6px;
+    padding-right: 1.5vw;
+    margin-bottom: 3.5vh;
+}
+
+
+.notes-input-container>button:disabled {
+    cursor: not-allowed;
+}
+
+
+@media screen and (min-width: 769px) {
+    .notes-input-layout {
+        border-bottom-left-radius: 9px;
+    }
+}

@@ -1,0 +1,9 @@
+.notes-page-layout {
+    height: 100dvh;
+
+    background: var(--page-bg);
+
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-columns: 1fr;
+}

@@ -1,5 +1,5 @@
 import { Fragment, useContext, useState } from "react";
-import { saveNewGroupToLS, IGroup } from "@/utilities/localStorage/group";
+import { saveNewGroupToLS, IGroup, isGroupNameUnique } from "@/utilities/localStorage/group";
 import { groupsContext } from "@/context/groups";
 import useNewGroupModal from "@/hooks/modal/useNewGroupModal";
 import { generateId } from "@/utilities/id";
@@ -11,6 +11,7 @@ const NewGroup = () => {
 
     // states
     const [color, setColor] = useState<typeof colorOptions[number]>("#B38BFA");
+    const [error, setError] = useState("");
 
 
     // contexts
@@ -32,7 +33,14 @@ const NewGroup = () => {
         const formData = new FormData(e.currentTarget);
         const groupName = formData.get("groupName") as string;
         const bgColor = formData.get("color") as string;
-        const id = generateId()
+        const id = generateId();
+
+        const isUnique = isGroupNameUnique(groupName)
+
+        if (!isUnique) {
+            setError("Group Name already exists");
+            return
+        }
 
         saveNewGroupToLS(groupName, bgColor, id);
 
@@ -55,11 +63,14 @@ const NewGroup = () => {
             <form action="" onSubmit={handleFormSubmit}>
                 <h1>Create New group</h1>
 
+                <p className="new-grp-form-error">{error}</p>
+
                 <div className="form-input-container">
 
                     <label htmlFor="grpName">Group Name</label>
                     <input type="text" id="grpName" name="groupName" placeholder="Enter group name"
-                        required maxLength={19} />
+                        className={error !== "" ? "new-grp-form-error-border" : ""}
+                        required maxLength={20} />
 
                 </div>
 

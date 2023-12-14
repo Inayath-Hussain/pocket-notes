@@ -1,11 +1,11 @@
 import "./navicon.css"
 
-interface Iprops {
+export interface INavIconProps {
     groupName: string
     bgColor: string
 }
 
-const NavIcon: React.FC<Iprops> = ({ groupName, bgColor }) => {
+const NavIcon: React.FC<INavIconProps> = ({ groupName, bgColor }) => {
     const [firstWord, secondWord] = groupName.split(" ");
 
     return (

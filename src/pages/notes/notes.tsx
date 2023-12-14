@@ -28,6 +28,8 @@ const NotesPage = () => {
 
             const groupNotes = getNotesFromLS(id);
 
+            // when a new group is created then a key value pair with id of group to empty array is saved so when groupNotes is null then it means group doesn't exist.
+            // although this check is unnecessary and I have done this for type safety
             if (groupNotes === null) {
                 console.error("group doesnt exist");
 
@@ -41,18 +43,14 @@ const NotesPage = () => {
     }, [id]);
 
 
-    // refactor this to find obj and a variable for groupExists
-    const groupExists = useMemo(() => { console.log("groups .... ", groups); return groups.some(g => g.id === id) }, [id, groups]);
 
-    // gets
     const getGroupInfo = () => {
-        if (groupExists) {
-            return groups.find(grp => grp.id === id);
-        }
+        return groups.find(grp => grp.id === id);
     }
 
     const groupInfo = useMemo(getGroupInfo, [id]);
 
+    const groupExists = groupInfo !== undefined
 
     const saveNote = (noteContent: string) => {
 

@@ -7,8 +7,8 @@ export interface Inote {
  *  
  * @returns all user saved notes from local storage or null if group doesn't exist
  */
-export const getNotesFromLS = (groupName: string): Inote | null => {
-    const notes = localStorage.getItem(groupName);
+export const getNotesFromLS = (id: string): Inote[] | null => {
+    const notes = localStorage.getItem(id);
 
     if (notes === null) return null
 
@@ -19,8 +19,8 @@ export const getNotesFromLS = (groupName: string): Inote | null => {
 /**
  * creates and saves empty notes array to local storage with groupName as key
  */
-export const createAndSaveNotesToLS = (groupName: string) => {
+export const createAndSaveNotesToLS = (id: string) => {
     const notes: Inote[] = []
 
-    localStorage.setItem(groupName, JSON.stringify(notes))
+    localStorage.setItem(id, JSON.stringify(notes))
 }

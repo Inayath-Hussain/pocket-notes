@@ -14,6 +14,5 @@ export const getGroupRouteParam = (path: string) => {
     const startIndex = groupNotePrefix.length
     const param = path.substring(startIndex);
 
-    console.log(path, param)
     return decodeURIComponent(param)
 }

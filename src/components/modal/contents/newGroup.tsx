@@ -1,8 +1,9 @@
 import { Fragment, useContext, useState } from "react";
-import "./newGroup.css";
 import { saveNewGroupToLS, IGroup } from "@/utilities/localStorage/group";
 import { groupsContext } from "@/context/groups";
 import useNewGroupModal from "@/hooks/modal/useNewGroupModal";
+import { generateId } from "@/utilities/id";
+import "./newGroup.css";
 
 const NewGroup = () => {
 
@@ -31,12 +32,13 @@ const NewGroup = () => {
         const formData = new FormData(e.currentTarget);
         const groupName = formData.get("groupName") as string;
         const bgColor = formData.get("color") as string;
+        const id = generateId()
 
-        saveNewGroupToLS(groupName, bgColor);
+        saveNewGroupToLS(groupName, bgColor, id);
 
         setGroups(prev => {
             const newState = [...prev]
-            const newGroup: IGroup = { groupName, bgColor }
+            const newGroup: IGroup = { groupName, bgColor, id }
 
             newState.unshift(newGroup)
 
@@ -56,7 +58,8 @@ const NewGroup = () => {
                 <div className="form-input-container">
 
                     <label htmlFor="grpName">Group Name</label>
-                    <input type="text" id="grpName" name="groupName" placeholder="Enter group name" required />
+                    <input type="text" id="grpName" name="groupName" placeholder="Enter group name"
+                        required maxLength={19} />
 
                 </div>
 

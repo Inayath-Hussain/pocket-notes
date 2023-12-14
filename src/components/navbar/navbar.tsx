@@ -27,6 +27,7 @@ const NavBar = () => {
         // if url is a groupNote route then get groupName param and update currentGroup.
         // this is done to update the current group UI when user searchs the group from browser search bar.
         const param = pathname.includes(groupNotePrefix) ? getGroupRouteParam(pathname) : "";
+        console.log("param ...", param)
         setCurrentGroup(param);
 
     }, [pathname])
@@ -48,8 +49,8 @@ const NavBar = () => {
                 {/* all user saved groups */}
                 {groups.length > 0 && groups.map(g => (
 
-                    <Link to={customGroupRoute(g.groupName)} key={g.groupName} onClick={() => setCurrentGroup(g.groupName)}
-                        className={`link ${g.groupName === currentGroup ? "current" : ""}`}>
+                    <Link to={customGroupRoute(g.id)} key={g.id} onClick={() => setCurrentGroup(g.groupName)}
+                        className={`link ${g.id === currentGroup ? "current" : ""}`}>
 
                         <NavIcon groupName={g.groupName} bgColor={g.bgColor} />
                         <p>{g.groupName}</p>

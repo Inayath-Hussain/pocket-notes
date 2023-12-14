@@ -3,6 +3,7 @@ import { createAndSaveNotesToLS } from "./notes";
 const key = "groups"
 
 export interface IGroup {
+    id: string
     groupName: string
     bgColor: string
 }
@@ -10,21 +11,22 @@ export interface IGroup {
 
 
 /**
- * creates and saves new group in local storage
+ * creates new group and an empty notes array using id as key for the notes and saves in local storage 
  */
-export const saveNewGroupToLS = (groupName: string, bgColor: string) => {
+export const saveNewGroupToLS = (groupName: string, bgColor: string, id: string) => {
     const data = getGroupsFromLS() || [];
 
     const newGroup: IGroup = {
         groupName,
-        bgColor
+        bgColor,
+        id
     }
 
     data.unshift(newGroup)
 
     localStorage.setItem(key, JSON.stringify(data));
 
-    createAndSaveNotesToLS(groupName);
+    createAndSaveNotesToLS(id);
 }
 
 /**

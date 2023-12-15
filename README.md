@@ -1,30 +1,32 @@
-# React + TypeScript + Vite
+# Pocket Notes
+A react single page web application to save your notes.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+### Storage
+- Groups and their notes are stored in local storage.
 
-Currently, two official plugins are available:
+### Group Identification
+- Group names are unique.
+- Id for groups are the timestamp of their creation and these ids are used as url parameter to get all the notes of that group.
+- Despite Group names being unique, timestamps are used as id's to allow special characters such as '/' in group names.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Further changes To be made
+- Replace local storage with a dedicated server to store all the data in a mongodb cluster.
+- Use a authentication system like a custom jwt or services like OAuth to handle manage multiple users data.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To run this app locally
 
-- Configure the top-level `parserOptions` property like this:
+### Clone this Repo
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+git clone https://github.com/Inayath-Hussain/pocket-notes.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Install Dependencies and run on local server
+```bash
+cd pocket-notes
+npm install
+npm run dev
+```

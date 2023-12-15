@@ -10,7 +10,7 @@ export const getDate = (dateObj: Date) => {
     return `${date} ${month} ${year}`
 }
 
-
+// returns first three letters of month. example - Jan
 const getMonthString = (dateObj: Date) => {
     return dateObj.toDateString().substring(4, 7)
 }

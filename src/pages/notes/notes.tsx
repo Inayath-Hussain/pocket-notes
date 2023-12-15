@@ -1,12 +1,12 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import NotesHeader from "@/components/notes/header";
+import NotesList from "@/components/notes/notesList";
+import NotesInput from "@/components/notes/input";
 import { groupsContext } from "@/context/groups"
 import { Inote, getNotesFromLS, addNoteToLS } from "@/utilities/localStorage/notes";
 import PageNotFound from "../notFound/notFound";
 import "./notes.css";
-import NotesList from "@/components/notes/notesList";
-import NotesInput from "@/components/notes/input";
 
 const NotesPage = () => {
 

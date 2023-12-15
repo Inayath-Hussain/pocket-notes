@@ -15,6 +15,7 @@ function App() {
 
       <NavBar />
 
+      {/* hides this div in mobile view when user is in homepage */}
       <div className={pathname === homeRoute ? "hide-page-only-mobile" : ""} >
         <Routes>
           <Route path={homeRoute} element={<HomePage />} />

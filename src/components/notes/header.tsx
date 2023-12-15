@@ -29,4 +29,6 @@ const NotesHeader: React.FC<Iprops> = ({ bgColor, groupName }) => {
     );
 }
 
+// memo is used to re-render only when props are changed. In this case group name or background color.
+// This is done to avoid unnecessary re-render when notes are added
 export default memo(NotesHeader);

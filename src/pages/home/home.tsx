@@ -18,6 +18,7 @@ const HomePage = () => {
                 <img src={lockIcon} alt="" />
                 <p>end-to-end encrypted</p>
             </footer>
+
         </div>
     );
 }

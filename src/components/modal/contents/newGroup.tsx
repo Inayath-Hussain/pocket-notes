@@ -53,6 +53,7 @@ const NewGroup = () => {
             return newState;
         })
 
+        // on successful creation, closes modal
         hideNewGroupFormModal();
 
     }
